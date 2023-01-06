@@ -17,7 +17,6 @@ def findmax(amatrix):  # function to return the maximum number in a matrix
     return max
 
 
-
 first_line = sys.stdin.readline()
 matrix_lenght = ""
 num_of_pizzarias = ""
@@ -62,6 +61,7 @@ for i in range(int(num_of_pizzarias)):
     start_x = origin_of_pizzeria_x
     start_y = origin_of_pizzeria_y
     counter = 1 + serve_radius
+    first, second, third, fourth = False
 
     # this following code block is the 1st part of the catesian coordianate system
     tempserve = serve_radius
@@ -79,6 +79,7 @@ for i in range(int(num_of_pizzarias)):
                         tempxx += 1
                         tempyy -= 1
                 tempy -= 1
+            first = True
         else:
             tempserve -= 1
     # this following code block is the 2nd part of the catesian coordianate system
@@ -97,6 +98,7 @@ for i in range(int(num_of_pizzarias)):
                         tempxx -= 1
                         tempyy -= 1
                 tempy -= 1
+            second = True
         else:
             tempserve -= 1
     # this following code block is the 3rd part of the catesian coordianate system
@@ -115,6 +117,7 @@ for i in range(int(num_of_pizzarias)):
                         tempxx -= 1
                         tempyy += 1
                 tempy += 1
+            third = True
         else:
             tempserve += 1
     # this following code block is the 4th part of the catesian coordianate system
@@ -133,5 +136,16 @@ for i in range(int(num_of_pizzarias)):
                         tempxx += 1
                         tempyy += 1
                 tempy += 1
+            fourth = True
         else:
             tempserve += 1
+    if first and second:
+        temp = serve_radius
+        for a in range(serve_radius):
+            matrix[origin_of_pizzeria_x][origin_of_pizzeria_y + temp] -= 1
+            temp -= 1
+    if third and fourth:
+        temp = serve_radius
+        for a in range(serve_radius):
+            matrix[origin_of_pizzeria_x][origin_of_pizzeria_y - (temp + 1)] -= 1
+            temp -= 1
