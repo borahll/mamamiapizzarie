@@ -18,20 +18,16 @@ def findmax(amatrix):  # function to return the maximum number in a matrix
 
 
 first_line = sys.stdin.readline()
-matrix_lenght = ""
-num_of_pizzarias = ""
-for ch in first_line:
-    if ch == " ":
-        break
-    else:
-        matrix_lenght += ch
-
+x = first_line.split(' ')
+matrix_lenght = x[0]
+num_of_pizzarias = x[1]
+# for ch in first_line:
+#     if ch == " ":
+#         break
+#     else:
+#         matrix_lenght += ch
+#
 matrix = [[0] * int(matrix_lenght)] * int(matrix_lenght)
-for ch in first_line:
-    if ch == " ":
-        break
-    else:
-        num_of_pizzarias += ch
 
 matrix_lenght = int(matrix_lenght)
 origin_of_pizzeria_x = ""
@@ -51,8 +47,9 @@ for i in range(int(num_of_pizzarias)):
         if ch == " ":
             break
         serve_radius += ch
-    origin_of_pizzeria_x = int(origin_of_pizzeria_x)
-    origin_of_pizzeria_y = int(origin_of_pizzeria_y)
+    origin_of_pizzeria_x = int(origin_of_pizzeria_x) - 1
+    origin_of_pizzeria_y = int(origin_of_pizzeria_y) - 1
+    print(origin_of_pizzeria_y)
     serve_radius = int(serve_radius)
     start_x = origin_of_pizzeria_x
     start_y = origin_of_pizzeria_y
@@ -145,6 +142,7 @@ for i in range(int(num_of_pizzarias)):
     if first and second:
         temp = serve_radius
         for a in range(serve_radius):
+            print(num_of_pizzarias)
             matrix[origin_of_pizzeria_x][origin_of_pizzeria_y + temp] -= 1
             temp -= 1
     if third and fourth:
