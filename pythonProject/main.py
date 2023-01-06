@@ -9,30 +9,25 @@ def isvalid(matrixlen, x, y):  # check if the provided x and y are valid in the 
 
 
 def findmax(amatrix):  # function to return the maximum number in a matrix
-    max = amatrix[0][0]
+    max1 = amatrix[0][0]
     for row in amatrix:
         for column in amatrix:
-            if max < amatrix[row][column]:
-                max = amatrix[row][column]
-    return max
+            if max1 < amatrix[row][column]:
+                max1 = amatrix[row][column]
+    return max1
 
 
 first_line = sys.stdin.readline()
 x = first_line.split(' ')
 matrix_lenght = x[0]
 num_of_pizzarias = x[1]
-# for ch in first_line:
-#     if ch == " ":
-#         break
-#     else:
-#         matrix_lenght += ch
-#
 matrix = [[0] * int(matrix_lenght)] * int(matrix_lenght)
-
 matrix_lenght = int(matrix_lenght)
 origin_of_pizzeria_x = ""
 origin_of_pizzeria_y = ""
 serve_radius = ""
+
+sys.stdin.readline()
 for i in range(int(num_of_pizzarias)):
     line = sys.stdin.readline()
     for ch in line:
@@ -142,7 +137,7 @@ for i in range(int(num_of_pizzarias)):
     if first and second:
         temp = serve_radius
         for a in range(serve_radius):
-            print(num_of_pizzarias)
+            print(serve_radius)
             matrix[origin_of_pizzeria_x][origin_of_pizzeria_y + temp] -= 1
             temp -= 1
     if third and fourth:
