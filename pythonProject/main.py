@@ -149,3 +149,4 @@ for i in range(int(num_of_pizzarias)):
         for a in range(serve_radius):
             matrix[origin_of_pizzeria_x][origin_of_pizzeria_y - (temp + 1)] -= 1
             temp -= 1
+print(f' The maximum is  {findmax(matrix)}')
