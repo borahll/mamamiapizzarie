@@ -61,7 +61,10 @@ for i in range(int(num_of_pizzarias)):
     start_x = origin_of_pizzeria_x
     start_y = origin_of_pizzeria_y
     counter = 1 + serve_radius
-    first, second, third, fourth = False
+    first = False
+    second = False
+    third = False
+    fourth = False
 
     # this following code block is the 1st part of the catesian coordianate system
     tempserve = serve_radius
