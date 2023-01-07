@@ -61,7 +61,7 @@ for i in range(int(num_of_pizzarias)):
     tempx = start_x
     tempy = start_y
     for k in range(serve_radius):
-        start_y = origin_of_pizzeria_y + tempserve
+        start_x = origin_of_pizzeria_x - tempserve
         if isvalid(matrix_lenght, start_x, start_y):
             for a in range(tempserve):
                 tempxx = tempx
@@ -70,8 +70,8 @@ for i in range(int(num_of_pizzarias)):
                     if isvalid(matrix_lenght, tempxx, tempyy):
                         matrix[tempxx][tempyy] += 1
                         tempxx += 1
-                        tempyy -= 1
-                tempy -= 1
+                        tempyy += 1
+                tempx += 1
                 printmatrix(matrix)
             first = True
         else:
@@ -81,7 +81,7 @@ for i in range(int(num_of_pizzarias)):
     tempx = start_x
     tempy = start_y
     for k in range(serve_radius):
-        start_y = origin_of_pizzeria_y + tempserve
+        start_x = origin_of_pizzeria_x - tempserve
         if isvalid(matrix_lenght, start_x, start_y):
             for a in range(tempserve):
                 tempxx = tempx
@@ -91,7 +91,7 @@ for i in range(int(num_of_pizzarias)):
                         matrix[tempxx][tempyy] += 1
                         tempxx -= 1
                         tempyy -= 1
-                tempy -= 1
+                tempx += 1
                 #printmatrix(matrix)
             second = True
         else:
@@ -101,7 +101,7 @@ for i in range(int(num_of_pizzarias)):
     tempx = start_x
     tempy = start_y
     for k in range(serve_radius):
-        start_y = origin_of_pizzeria_y - (tempserve + 1)
+        start_x = origin_of_pizzeria_x + (tempserve + 1)
         if isvalid(matrix_lenght, start_x, start_y):
             for a in range(tempserve):
                 tempxx = tempx
@@ -110,8 +110,8 @@ for i in range(int(num_of_pizzarias)):
                     if isvalid(matrix_lenght, tempxx, tempyy):
                         matrix[tempxx][tempyy] += 1
                         tempxx -= 1
-                        tempyy += 1
-                tempy += 1
+                        tempyy -= 1
+                tempx -= 1
                 #printmatrix(matrix)
             third = True
         else:
@@ -121,7 +121,7 @@ for i in range(int(num_of_pizzarias)):
     tempx = start_x
     tempy = start_y
     for k in range(serve_radius):
-        start_y = origin_of_pizzeria_y - (tempserve + 1)
+        start_x = origin_of_pizzeria_x + (tempserve + 1)
         if isvalid(matrix_lenght, start_x, start_y):
             for a in range(tempserve):
                 tempxx = tempx
@@ -129,9 +129,9 @@ for i in range(int(num_of_pizzarias)):
                 for b in range(counter):
                     if isvalid(matrix_lenght, tempxx, tempyy):
                         matrix[tempxx][tempyy] += 1
-                        tempxx += 1
+                        tempxx -= 1
                         tempyy += 1
-                tempy += 1
+                tempx -= 1
                 #printmatrix(matrix)
             fourth = True
         else:
