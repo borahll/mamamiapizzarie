@@ -33,7 +33,6 @@ origin_of_pizzeria_x = ""
 origin_of_pizzeria_y = ""
 serve_radius = ""
 
-
 for i in range(int(num_of_pizzarias)):
     line = sys.stdin.readline()
     x = line.split(" ")
@@ -43,7 +42,7 @@ for i in range(int(num_of_pizzarias)):
     origin_of_pizzeria_x = int(origin_of_pizzeria_x) - 1
     origin_of_pizzeria_y = int(origin_of_pizzeria_y) - 1
     serve_radius = int(serve_radius)
-    print(f"{origin_of_pizzeria_y} {origin_of_pizzeria_x} {serve_radius}")
+    print(f"{origin_of_pizzeria_y} {origin_of_pizzeria_x} {serve_radius} Another pizzaria")
     start_x = origin_of_pizzeria_x
     start_y = origin_of_pizzeria_y
     matrix[start_x][start_y] += 1
@@ -72,38 +71,48 @@ for i in range(int(num_of_pizzarias)):
                         tempxx += 1
                         tempyy += 1
                 start_x += 1
-                printmatrix(matrix)
+                counter -= 1
+                # printmatrix(matrix)
             first = True
             break
         else:
             tempserve -= 1
+            counter -= 1
     # this following code block is the 2nd part of the catesian coordianate system
+    start_x = origin_of_pizzeria_x
+    start_y = origin_of_pizzeria_y
     tempserve = serve_radius
+    counter = 1 + serve_radius
     tempx = start_x
     tempy = start_y
     for k in range(serve_radius):
         start_x = origin_of_pizzeria_x - tempserve
         if isvalid(matrix_lenght, start_x, start_y):
             for a in range(tempserve):
-                tempxx = tempx
+                tempxx = start_x
                 tempyy = tempy
                 for b in range(counter):
                     if isvalid(matrix_lenght, tempxx, tempyy):
                         matrix[tempxx][tempyy] += 1
-                        tempxx -= 1
+                        tempxx += 1
                         tempyy -= 1
-                tempx += 1
-                #printmatrix(matrix)
+                start_x += 1
+                counter -= 1
+                # printmatrix(matrix)
             second = True
             break
         else:
             tempserve -= 1
+            counter -= 1
     # this following code block is the 3rd part of the catesian coordianate system
+    start_x = origin_of_pizzeria_x
+    start_y = origin_of_pizzeria_y
+    counter = 1 + serve_radius
     tempserve = serve_radius
     tempx = start_x
     tempy = start_y
     for k in range(serve_radius):
-        start_x = origin_of_pizzeria_x + (tempserve + 1)
+        start_x = origin_of_pizzeria_x + tempserve
         if isvalid(matrix_lenght, start_x, start_y):
             for a in range(tempserve):
                 tempxx = start_x
@@ -114,17 +123,22 @@ for i in range(int(num_of_pizzarias)):
                         tempxx -= 1
                         tempyy -= 1
                 start_x -= 1
-                #printmatrix(matrix)
+                counter -= 1
+                # printmatrix(matrix)
             third = True
             break
         else:
-            tempserve += 1
+            tempserve -= 1
+            counter -= 1
     # this following code block is the 4th part of the catesian coordianate system
+    start_x = origin_of_pizzeria_x
+    start_y = origin_of_pizzeria_y
+    counter = 1 + serve_radius
     tempserve = serve_radius
     tempx = start_x
     tempy = start_y
     for k in range(serve_radius):
-        start_x = origin_of_pizzeria_x + (tempserve + 1)
+        start_x = origin_of_pizzeria_x + tempserve
         if isvalid(matrix_lenght, start_x, start_y):
             for a in range(tempserve):
                 tempxx = start_x
@@ -135,19 +149,23 @@ for i in range(int(num_of_pizzarias)):
                         tempxx -= 1
                         tempyy += 1
                 start_x -= 1
-                #printmatrix(matrix)
+                counter -= 1
+               # printmatrix(matrix)
             fourth = True
             break
         else:
-            tempserve += 1
+            tempserve -= 1
+            counter -= 1
     if first and second:
-        temp = serve_radius
-        for a in range(serve_radius):
-            matrix[origin_of_pizzeria_x][origin_of_pizzeria_y + temp] -= 1
-            temp -= 1
+        printmatrix(matrix)
+        for a in range(serve_radius + 1):
+            matrix[origin_of_pizzeria_x - a][origin_of_pizzeria_y] -= 1
+        matrix[origin_of_pizzeria_x][origin_of_pizzeria_y] += 1
     if third and fourth:
-        temp = serve_radius
-        for a in range(serve_radius):
-            matrix[origin_of_pizzeria_x][origin_of_pizzeria_y - (temp + 1)] -= 1
-            temp -= 1
+        for a in range(serve_radius + 1):
+            matrix[origin_of_pizzeria_x][origin_of_pizzeria_y - a] -= 1
+            matrix[origin_of_pizzeria_x][origin_of_pizzeria_y + a] -= 1
+            matrix[origin_of_pizzeria_x + a][origin_of_pizzeria_y] -= 1
+        matrix[origin_of_pizzeria_x][origin_of_pizzeria_y] += 3
+        printmatrix(matrix)
 print(f" The maximum is  {findmax(matrix)}")
