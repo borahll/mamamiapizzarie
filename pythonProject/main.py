@@ -27,7 +27,6 @@ x = first_line.split(' ')
 matrix_lenght = x[0]
 num_of_pizzarias = x[1]
 matrix = [[0 for j in range(int(matrix_lenght))] for i in range(int(matrix_lenght))]
-printmatrix(matrix)
 matrix_lenght = int(matrix_lenght)
 origin_of_pizzeria_x = ""
 origin_of_pizzeria_y = ""
@@ -39,7 +38,7 @@ for i in range(int(num_of_pizzarias)):
     origin_of_pizzeria_x = x[0]
     origin_of_pizzeria_y = x[1]
     serve_radius = x[2]
-    origin_of_pizzeria_x = int(origin_of_pizzeria_x) - 1
+    origin_of_pizzeria_x = 5 - int(origin_of_pizzeria_x)
     origin_of_pizzeria_y = int(origin_of_pizzeria_y) - 1
     serve_radius = int(serve_radius)
     print(f"{origin_of_pizzeria_y} {origin_of_pizzeria_x} {serve_radius} Another pizzaria")
@@ -150,14 +149,13 @@ for i in range(int(num_of_pizzarias)):
                         tempyy += 1
                 start_x -= 1
                 counter -= 1
-               # printmatrix(matrix)
+            # printmatrix(matrix)
             fourth = True
             break
         else:
             tempserve -= 1
             counter -= 1
     if first and second:
-        printmatrix(matrix)
         for a in range(serve_radius + 1):
             matrix[origin_of_pizzeria_x - a][origin_of_pizzeria_y] -= 1
         matrix[origin_of_pizzeria_x][origin_of_pizzeria_y] += 1
@@ -167,5 +165,4 @@ for i in range(int(num_of_pizzarias)):
             matrix[origin_of_pizzeria_x][origin_of_pizzeria_y + a] -= 1
             matrix[origin_of_pizzeria_x + a][origin_of_pizzeria_y] -= 1
         matrix[origin_of_pizzeria_x][origin_of_pizzeria_y] += 3
-        printmatrix(matrix)
 print(f" The maximum is  {findmax(matrix)}")
