@@ -64,16 +64,17 @@ for i in range(int(num_of_pizzarias)):
         start_x = origin_of_pizzeria_x - tempserve
         if isvalid(matrix_lenght, start_x, start_y):
             for a in range(tempserve):
-                tempxx = tempx
+                tempxx = start_x
                 tempyy = tempy
                 for b in range(counter):
                     if isvalid(matrix_lenght, tempxx, tempyy):
                         matrix[tempxx][tempyy] += 1
                         tempxx += 1
                         tempyy += 1
-                tempx += 1
+                start_x += 1
                 printmatrix(matrix)
             first = True
+            break
         else:
             tempserve -= 1
     # this following code block is the 2nd part of the catesian coordianate system
@@ -94,6 +95,7 @@ for i in range(int(num_of_pizzarias)):
                 tempx += 1
                 #printmatrix(matrix)
             second = True
+            break
         else:
             tempserve -= 1
     # this following code block is the 3rd part of the catesian coordianate system
@@ -104,16 +106,17 @@ for i in range(int(num_of_pizzarias)):
         start_x = origin_of_pizzeria_x + (tempserve + 1)
         if isvalid(matrix_lenght, start_x, start_y):
             for a in range(tempserve):
-                tempxx = tempx
+                tempxx = start_x
                 tempyy = tempy
                 for b in range(counter):
                     if isvalid(matrix_lenght, tempxx, tempyy):
                         matrix[tempxx][tempyy] += 1
                         tempxx -= 1
                         tempyy -= 1
-                tempx -= 1
+                start_x -= 1
                 #printmatrix(matrix)
             third = True
+            break
         else:
             tempserve += 1
     # this following code block is the 4th part of the catesian coordianate system
@@ -124,16 +127,17 @@ for i in range(int(num_of_pizzarias)):
         start_x = origin_of_pizzeria_x + (tempserve + 1)
         if isvalid(matrix_lenght, start_x, start_y):
             for a in range(tempserve):
-                tempxx = tempx
+                tempxx = start_x
                 tempyy = tempy
                 for b in range(counter):
                     if isvalid(matrix_lenght, tempxx, tempyy):
                         matrix[tempxx][tempyy] += 1
                         tempxx -= 1
                         tempyy += 1
-                tempx -= 1
+                start_x -= 1
                 #printmatrix(matrix)
             fourth = True
+            break
         else:
             tempserve += 1
     if first and second:
