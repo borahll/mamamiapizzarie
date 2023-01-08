@@ -166,3 +166,26 @@ for i in range(int(num_of_pizzarias)):
             matrix[origin_of_pizzeria_x + a][origin_of_pizzeria_y] -= 1
         matrix[origin_of_pizzeria_x][origin_of_pizzeria_y] += 3
 print(f" The maximum is  {findmax(matrix)}")
+"""
+the recursive function signature would be like the following:
+    visited = []
+    rec(currentLine, matrix)
+        if(EOF):
+            return
+        x = currentLine.split(" ")
+        originx = x[0]
+        originy = x[1]
+        serveRadius = x[2]
+        matrix = increment(matrix, originx, originy, serveRadius, serveRadius + 1, visited)
+        rec(theFollowingLine, matrix)
+    increment(matrix, originx, originy, serveRadius, visited)
+        dijksstras algorithm?
+        if doesExist(visited, originx, originy) or serveRadius <= 0 or not isValid(matrix, originx, originy)
+            return
+        visited.append(""+originx+originy)
+        matrix[originx][originy] += 1
+        increment(matrix, originx + 1, originy, serveRadius - 1, visited)
+        increment(matrix, originx - 1, originy, serveRadius - 1, visited)
+        increment(matrix, originx, originy + 1, serveRadius - 1, visited)
+        increment(matrix, originx, originy - 1, serveRadius - 1, visited)
+"""
